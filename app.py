@@ -389,7 +389,7 @@ def error_404(error):
     return('/')
 
 run(
-    host='0.0.0.0',
-    server='tornado',
-    port=3000
+    host = '0.0.0.0',
+    server = 'tornado',
+    port = 3000
 )
