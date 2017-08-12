@@ -1,6 +1,9 @@
 ﻿from bottle import route, run, error, request
 import re
 
+def redirect(data):
+    return('<meta http-equiv="refresh" content="0;url=' + data + '" />')
+
 def namumark(data):
     data = re.sub('<', '&lt;', data)
     data = re.sub('>', '&gt;', data)
@@ -54,11 +57,9 @@ def namumark(data):
                         if(e):
                             resultss = e.groups()
                             if(resultss[0] == 'right'):
-                                alltable += 'margin-left:auto;'
+                                alltable += 'float:right;'
                             elif(resultss[0] == 'center'):
                                 alltable += 'margin:auto;'
-                            else:
-                                alltable += 'margin-right:auto;'
                                 
                         ee = re.search("&lt;table\s?textalign=((?:(?!&gt;).)*)&gt;", result[1])
                         if(ee):
@@ -67,8 +68,6 @@ def namumark(data):
                                 alltable += 'text-align:right;'
                             elif(resultss[0] == 'center'):
                                 alltable += 'text-align:center;'
-                            else:
-                                alltable += 'text-align:left;'
                         
                         r = re.search("&lt;-((?:(?!&gt;).)*)&gt;", result[1])
                         if(r):
@@ -362,6 +361,8 @@ def start():
     if(request.method == 'POST'):
         data =  '<html> \
                     <body> \
+                        <a href="https://github.com/2DU/NamuMark-Table-To-MediaWiki">깃 허브</a> \
+                        <br> \
                         <form action="/" method="POST"> \
                             <textarea style="width: 100%; height: 500px;" name="data">' + request.POST.data + '</textarea> \
                             <br> \
@@ -374,6 +375,8 @@ def start():
     else:
         data =  '<html> \
                     <body> \
+                        <a href="https://github.com/2DU/NamuMark-Table-To-MediaWiki">깃 허브</a> \
+                        <br> \
                         <form action="/" method="POST"> \
                             <textarea style="width: 100%; height: 500px;" name="data"></textarea> \
                             <br> \
@@ -386,7 +389,7 @@ def start():
 
 @error(404)
 def error_404(error):
-    return('/')
+    return(redirect('/'))
 
 run(
     host = '0.0.0.0',
