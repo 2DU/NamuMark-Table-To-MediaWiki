@@ -241,7 +241,7 @@ def start():
     if(request.method == 'POST'):
         data =  '<html> \
                     <body> \
-                        <a href="https://github.com/2DU/NamuMark-Table-To-MediaWiki">깃 허브</a> \
+                        <a href="https://github.com/2DU/NamuMark-Table-To-MediaWiki">깃 허브</a> <a href="http://namu.ml/w/온마크">문법</a> \
                         <br> \
                         <form action="/" method="POST"> \
                             <textarea style="width: 100%; height: 500px;" name="data">' + request.POST.data + '</textarea> \
@@ -255,7 +255,7 @@ def start():
     else:
         data =  '<html> \
                     <body> \
-                        <a href="https://github.com/2DU/NamuMark-Table-To-MediaWiki">깃 허브</a> \
+                        <a href="https://github.com/2DU/NamuMark-Table-To-MediaWiki">깃 허브</a> <a href="http://namu.ml/w/온마크">문법</a> \
                         <br> \
                         <form action="/" method="POST"> \
                             <textarea style="width: 100%; height: 500px;" name="data"></textarea> \
